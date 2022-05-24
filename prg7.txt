@@ -1,0 +1,83 @@
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> create table student(StudentID int primary key,StudentName varchar(20),Marks int);
+Table created.
+
+SQL> insert into student values(1,'Sanjay',64);
+
+1 row created.
+
+SQL> insert into student values(2,'Varun',72);
+
+1 row created.
+
+SQL> insert into student values(3,'Akash',45);
+
+1 row created.
+
+SQL> insert into student values(4,'Rohit',86);
+
+1 row created.
+
+SQL> insert into student values(5,'Anjali',92);
+
+1 row created.
+
+SQL> insert into student values(6,'Ammu',95);
+
+1 row created.
+
+SQL> insert into student values(7,'Rahul',80);
+
+1 row created.
+
+SQL> insert into student values(8,'Prathibha',62);
+
+1 row created.
+
+SQL> insert into student values(9,'Ravi',75);
+
+1 row created.
+
+SQL> insert into student values(10,'Pulkit',76);
+
+1 row created.
+
+SQL> select count(Marks) as student from student where marks>75;
+
+   STUDENT
+----------------
+         5
+
+SQL> select avg(Marks) from student;
+
+AVG(MARKS)
+-------------------
+      74.7
+
+
+SQL> select min(Marks) from student;
+
+MIN(MARKS)
+-------------------
+        45
+
+
+SQL> select * from student where Marks=(select min(Marks) from student);
+
+ STUDENTID    STUDENTNAME     MARKS
+------------------- -----------------------  -------------
+                     3      Akash                        45
+
+SQL> select max(Marks) from student;
+
+MAX(MARKS)
+-------------------
+        95
+SQL> select * from student where Marks=(select max(Marks) from student);
+
+ STUDENTID   STUDENTNAME     MARKS
+------------------ ------------------------ -------------
+                      6   Ammu                         95

@@ -1,0 +1,67 @@
+
+SQL> connect system
+Enter password:
+Connected.
+SQL> create table student(roll_no int,name varchar(20),course varchar(20),year int);
+
+Table created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> ed aneetamca04
+
+SQL> insert into student values(4,'rahul','mca',2020);
+
+1 row created.
+
+SQL> insert into student values(6,'anusha','mca',2021);
+
+1 row created.
+
+SQL> insert into student values(8,'anakha','mca',2020);
+
+1 row created.
+
+SQL> insert into student values(11,'ashitha','mca',2021);
+
+1 row created.
+
+SQL> insert into student values(14,'raj','mca',2019);
+
+1 row created.
+
+SQL> alter table student add primary key(roll_no);
+
+Table altered.
+
+SQL> select * from student;
+
+   ROLL_NO NAME                 COURSE                     YEAR
+---------- -------------------- -------------------- ----------
+         4 rahul                mca                        2020
+         6 anusha               mca                        2021
+         8 anakha               mca                        2020
+        11 ashitha              mca                        2021
+        14 raj                  mca                        2019
+
+
+
+SQL> truncate table student;
+
+Table truncated.
+
+SQL> select * from student;
+
+no rows selected
+
+SQL> drop table student;
+
+Table dropped.
+
+SQL> select * from student;
+select * from student
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist

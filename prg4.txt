@@ -1,0 +1,73 @@
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> select * from employee;
+
+    EMP_ID NAME                    DEPT_ID SALARY
+---------- -------------------- ---------- ----------
+      1001 anusha                      102 10000
+      1002 ashna                       101 8000
+      1003 ashitha                     103 18000
+      1004 ciya                        104 18500
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from employee;
+
+    EMP_ID NAME                    DEPT_ID SALARY
+---------- -------------------- ---------- ----------
+      1001 anusha                      102 10000
+      1002 ashna                       101 8000
+      1003 ashitha                     103 18000
+      1004 ciya                        104 18500
+
+SQL> delete from employee where emp_id=1002;
+
+1 row deleted.
+
+SQL> select * from employee;
+
+    EMP_ID NAME                    DEPT_ID SALARY
+---------- -------------------- ---------- ----------
+      1001 anusha                      102 10000
+      1003 ashitha                     103 18000
+      1004 ciya                        104 18500
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from employee;
+
+    EMP_ID NAME                    DEPT_ID SALARY
+---------- -------------------- ---------- ----------
+      1001 anusha                      102 10000
+      1002 ashna                       101 8000
+      1003 ashitha                     103 18000
+      1004 ciya                        104 18500
+
+SQL> savepoint s1;
+
+Savepoint created.
+
+SQL> delete from employee where emp_id=1002;
+
+1 row deleted.
+
+SQL> rollback to s1;
+
+Rollback complete.
+
+SQL> select * from employee;
+
+    EMP_ID NAME                    DEPT_ID SALARY
+---------- -------------------- ---------- ----------
+      1001 anusha                      102 10000
+      1002 ashna                       101 8000
+      1003 ashitha                     103 18000
+      1004 ciya                        104 18500
+
+SQL>

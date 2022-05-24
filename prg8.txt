@@ -1,0 +1,33 @@
+
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> create table sailors(sid int,sname varchar(10),rating real,age int);
+
+Table created.
+
+SQL> create table boats(bid int,bname varchar(10),color varchar(10));
+
+Table created.
+
+SQL> alter table sailors add primary key(sid);
+
+Table altered.
+
+SQL> alter table boats add primary key(bid);
+
+Table altered.
+
+
+SQL> create table reserves(sid int,bid int,day date);
+
+Table created.
+
+SQL> alter table reserves add foreign key(sid) references sailors(sid);
+
+Table altered.
+
+SQL> alter table reserves add foreign key(bid) references boats(bid);
+
+Table altered.

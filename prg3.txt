@@ -1,0 +1,60 @@
+  SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+
+
+SQL> grant create session to aneeta;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: aneeta
+Enter password:
+Connected.
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> grant insert,select on dept to aneeta;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: aneeta
+Enter password:
+Connected.
+
+SQL> select * from system.dept;
+
+   DEPT_ID DEPT                 HOD
+---------- -------------------- ----------
+       101 sales                aneesh
+       102 marketing            baiju
+       103 production           antony
+       104 management           mercy
+
+SQL> insert into system.dept values(105,'service','john');
+
+1 row created.
+
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+
+
+SQL> revoke insert on dept from aneeta;
+
+Revoke succeeded.
+
+SQL> connect
+Enter user-name: aneeta
+Enter password:
+Connected.
+SQL> insert into system.dept values(106,'customercare','manu');
+insert into system.dept values(106,'customercare','manu')
+                   *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+

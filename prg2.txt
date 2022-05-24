@@ -1,0 +1,138 @@
+
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> create table employee(emp_id int,name varchar(20),dept_id int,salary varchar(10));
+
+
+Table created.
+
+SQL> create table dept(dept_id int,dept varchar(20),hod varchar(10));
+
+Table created.
+
+
+SQL> alter table dept add primary key(dept_id);
+
+Table altered.
+
+
+SQL> alter table employee add primary key(emp_id);
+
+Table altered.
+
+SQL> alter table employee add foreign key(dept_id) references dept(dept_id);
+
+Table altered. 
+
+SQL> insert into  dept values(101,'sales','aneesh');
+
+1 row created.
+
+SQL> insert into  dept values(102,'marketing','baiju');
+
+1 row created.
+
+SQL> insert into  dept values(103,'production','antony');
+
+1 row created.
+
+SQL> insert into  dept values(104,'management','mercy');
+
+1 row created.
+
+SQL> insert into  dept values(105,'customerservice','joseph');
+
+1 row created.
+
+SQL> insert into employee values(1001,'anusha',102,10000);
+
+1 row created.
+
+SQL> select * from dept;
+
+   DEPT_ID DEPT                 HOD
+---------- -------------------- ----------
+       101 sales                     aneesh
+       102 marketing            baiju
+       103 production          antony
+       104 management        mercy
+       105 customerservice  joseph
+
+
+SQL> insert into employee values(1002,'ashna',101,8000);
+
+1 row created.
+
+SQL> insert into employee values(1003,'ashitha',101,18000);
+
+1 row created.
+
+SQL> insert into employee values(1004,'ciya',104,18500);
+
+1 row created.
+
+SQL> insert into employee values(1005,'john',105,10500);
+
+1 row created.
+
+SQL> select * from employee;
+
+    EMP_ID NAME                    DEPT_ID SALARY
+---------- -------------------- ---------- ----------
+      1001 anusha                     102    10000
+      1002 ashna                       101     8000
+      1003 ashitha                    101     18000
+      1004 ciya                         104     18500
+      1005 john                        105     10500
+
+SQL> update employee set dept_id=103 where emp_id=1003;
+
+1 row updated.
+
+SQL> select * from employee;
+
+    EMP_ID NAME                    DEPT_ID SALARY
+---------- -------------------- ---------- ----------
+      1001 anusha                     102    10000
+      1002 ashna                       101    8000
+      1003 ashitha                    103    18000
+      1004 ciya                         104    18500
+      1005 john                        105    10500
+
+
+SQL> update dept set dept='service' where dept_id=105;
+
+1 row updated.
+
+SQL> delete from employee where name='john';
+
+1 row deleted.
+
+SQL> select * from employee;
+
+    EMP_ID NAME                    DEPT_ID SALARY
+---------- -------------------- ---------- ----------
+      1001 anusha                      102   10000
+      1002 ashna                        101   8000
+      1003 ashitha                     103   18000
+      1004 ciya                          104   18500
+
+SQL> delete from dept where dept_id=105;
+
+1 row deleted.
+
+SQL> select * from dept;
+
+   DEPT_ID DEPT                 HOD
+---------- -------------------- ----------
+       101 sales                       aneesh
+       102 marketing              baiju
+       103 production            antony
+       104 management         mercy
+
+
+
+
+
