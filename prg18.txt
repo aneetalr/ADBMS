@@ -1,0 +1,62 @@
+
+SQL> CONNECT
+Enter user-name: system
+Enter password:
+Connected.
+SQL> set serveroutput on
+SQL> create table customers(id int,name varchar(10),age int,address varchar(20),salary
+int);
+
+Table created.
+
+SQL> insert into customers values(1,'Ramesh',23,'Allahabad',20000);
+
+1 row created.
+
+SQL> insert into customers values(2,'Suresh',22,'kanpur',22000);
+
+1 row created.
+
+SQL> insert into customers values(3,'Mahesh',24,'Ghaziabad',24000);
+
+1 row created.
+
+SQL> insert into customers values(4,'Chandan',25,'Noida',26000);
+
+1 row created.
+
+SQL> insert into customers values(5,'Alex',21,'Paris',28000);
+
+1 row created.
+
+SQL> insert into customers values(6,'Sunita',20,'Delhi',30000);
+
+1 row created.
+
+SQL> DECLARE
+  2  c_id customers.id%type;
+  3  c_name customers.name%type;
+  4  c_addr customers.address%type;
+  5  CURSOR c_customers is
+  6  SELECT id, name, address FROM customers;
+  7  BEGIN
+  8  OPEN c_customers;
+  9  LOOP
+ 10  FETCH c_customers into c_id, c_name, c_addr;
+ 11  EXIT WHEN c_customers%notfound;
+ 13  dbms_output.put_line(c_id || ' ' || c_name || ' ' || c_addr);  
+ 14  END LOOP;
+ 15  CLOSE c_customers;
+ 16  END;
+ 17  /
+
+1 Ramesh Allahabad
+2 Suresh kanpur
+3 Mahesh Ghaziabad
+4 Chandan Noida
+5 Alex Paris
+6 Sunita Delhi
+
+PL/SQL procedure successfully completed.
+
+SQL>
